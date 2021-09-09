@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import "./style.css"
 
 //Componente de presentación (sin lógica)
 export default class Tarjetas extends Component {
     constructor(props){
         super(props);
         this.state = {
-            clase: "none", //La idea es que no se muestre la descripcion al prinicpio. 
+             clase: "none", //La idea es que no se muestre la descripcion al prinicpio. 
              mensaje: "Ver Más",
         }
     
@@ -13,33 +14,31 @@ export default class Tarjetas extends Component {
 
      //Metodo que se llama cuando se hace clic en ver mas. 
      handleShow(){
-            if (this.state.clase === "none") { //si esta en hide, la idea es que se cambie a show. 
+            if (this.state.clase === "none") { //si esta en none, la idea es que se cambie a block. 
                 this.setState({
                     clase: "block",
                     mensaje: "Ver Menos"
                 })
                 } else {
-                    this.setState({   //si no esta en hide, esta en show. SI esta en show, al hacerle clic la idea es que se esconda. 
+                    this.setState({   //si no esta en none, esta en show. SI esta en block, al hacerle clic la idea es que se esconda. 
                         clase: "none",
-                        mensaje: "Ver Mas"
+                        mensaje: "Ver Más"
                     })
             }
         }
 
-       
-
+    
     render() {
         return (
-            <div>
-               <h4> {this.props.title} </h4>
+            <div className= "tarjetas" >
+               <h4 className= "titulo"> {this.props.title} </h4>
                <h4> Fecha de estreno: {this.props.release_date} </h4>
-               <img alt='20' src={`https://image.tmdb.org/t/p/w342/${this.props.backdrop_path}`}></img>
-               
+               <img alt='20' src={`https://image.tmdb.org/t/p/w342/${this.props.poster_path}`}></img>  {/* Se usan comillas invertidas, y $ Para llamar al valor*/}
                 <br/>
-                <h4 style={{display: this.state.clase }}> {this.props.overview} </h4>
-               <button onClick={() => this.handleShow(this.props.overview)}> {this.state.mensaje} </button>  {/* agregamos evento onclick  */}
+                <h4 style={{display: this.state.clase }}> {this.props.overview} </h4> {/* Usamos sintaxis de css, por eso la doble llave */}
+               <button className= "boton" onClick={() => this.handleShow(this.props.overview)}> {this.state.mensaje} </button>  {/* agregamos evento onclick  */}
 
-               <button onClick={()=> this.props.removerPelicula(this.props.title)}> Eliminar pelicula </button>
+               <button className= "boton" onClick={()=> this.props.removerPelicula(this.props.title)}> Eliminar pelicula </button>
            
             </div>
         )

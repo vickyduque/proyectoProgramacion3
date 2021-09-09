@@ -1,6 +1,7 @@
 .titulo {
 font-size: 22px;
 text-decoration: underline;
+text-align: center;
 }
 
 .boton {
@@ -10,3 +11,8 @@ font-weight: bold;
 color: white;
 background-color: black;
 }
+
+.tarjetas:hover{
+    box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
+ }
+

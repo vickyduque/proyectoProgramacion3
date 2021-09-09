@@ -37,7 +37,8 @@ export default class Tarjetas extends Component {
                 <br/>
                 <h4 style={{display: this.state.clase }}> {this.props.overview} </h4> {/* Usamos sintaxis de css, por eso la doble llave */}
                <button className= "boton" onClick={() => this.handleShow(this.props.overview)}> {this.state.mensaje} </button>  {/* agregamos evento onclick  */}
-
+               <br/>
+               <br/>
                <button className= "boton" onClick={()=> this.props.removerPelicula(this.props.title)}> Eliminar pelicula </button>
            
             </div>

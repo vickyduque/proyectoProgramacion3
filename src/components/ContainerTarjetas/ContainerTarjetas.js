@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Tarjetas from '../Tarjetas/Tarjetas';
+import "./styles.css"
+
 
 export default class ContainerTarjetas extends Component {
     constructor(props) {
@@ -40,7 +42,7 @@ export default class ContainerTarjetas extends Component {
 
     render() {
         return (
-            <div>
+            <div className= "container">
                 {this.state.tarjetas.map((tarjeta, index) => {
                         return <Tarjetas key={index}
                         title={tarjeta.title}

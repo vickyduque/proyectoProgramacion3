@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Tarjetas from '../Tarjetas/Tarjetas';
 import "./styles.css"
+import Form from '../Form/Form';
 
 
 export default class ContainerTarjetas extends Component {
@@ -8,7 +9,8 @@ export default class ContainerTarjetas extends Component {
         super(props);
         this.state = {
             tarjetas: [ ], // array de todas las pelis 
-            filteredMovies: [ ] // pelis filtradas para eliminar 
+            filteredMovies: [ ], // pelis filtradas para eliminar 
+            pagina: 2
         }
     }
 
@@ -40,9 +42,26 @@ export default class ContainerTarjetas extends Component {
        })
     }
 
-    render() {
-        return (
-            <div className= "container">
+    addPelicula(){
+    fetch('https://api.themoviedb.org/3/movie/popular?api_key=274e06a482f13c5a152ff7abe7a3142a&language=en-US&page=' + this.state.pagina)
+            .then(response => { return response.json() })
+            .then(data => {
+            //Lo que traemos del fetch se almacena en el estado (con setState) para luego ser accedido. 
+            //A la información que obtengo la guardo en el estado dentro de una propiedad (tarjetas que contiene la informacion a mappear).
+                this.setState({
+                    pagina: this.state.pagina + 1,
+                    tarjetas: this.state.tarjetas.concat(data.results)
+                })
+                console.log(this.state.tarjetas)
+            })
+            .catch(error => console.log(error));
+    }
+
+    mostrarContenido(){
+        if(this.state.tarjetas.length !== 0){
+            return(
+                <>
+            <button onClick = {() => this.addPelicula()} >Agregar peliculas</button>    
                 {this.state.tarjetas.map((tarjeta, index) => {
                         return <Tarjetas key={index}
                         title={tarjeta.title}
@@ -52,8 +71,27 @@ export default class ContainerTarjetas extends Component {
                         removerPelicula = {(title) => this.removerPelicula(title)} //paso una funcion para que elimine la peli. Recibe el id de cada peli. 
                         />
                     })
-                }
+            }
+            </>)
+        } else{
+            return <h2>Cargando...</h2>
+        }
+    }
+
+    filtrarPorNombre(title){
+        const peliculasFiltradas = this.state.tarjetas.filter(tarjeta => tarjeta.title.toLowerCase().includes(title.toLowerCase())) // Si (title) esta incluido en el titulo de cualquiera de las tarjetas
         
+        this.setState({
+            filteredMovies: peliculasFiltradas
+        })
+    }
+
+
+    render() {
+        return (
+            <div className= "container">
+                <Form filtrarPorNombre={(title)=>{this.filtrarPorNombre(title)}}/>
+                {this.mostrarContenido()}
             </div>
         )
     }

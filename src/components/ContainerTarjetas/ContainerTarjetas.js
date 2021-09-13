@@ -23,7 +23,8 @@ export default class ContainerTarjetas extends Component {
             //Lo que traemos del fetch se almacena en el estado (con setState) para luego ser accedido. 
             //A la información que obtengo la guardo en el estado dentro de una propiedad (tarjetas que contiene la informacion a mappear).
                 this.setState({
-                    tarjetas: data.results  // Results porque es la palabra que te da la API para devolverte los resultados de busqueda.
+                    tarjetas: data.results,  // Results porque es la palabra que te da la API para devolverte los resultados de busqueda.
+                    filteredMovies: data.results
                 })
             })
             .catch(error => console.log(error));
@@ -62,7 +63,7 @@ export default class ContainerTarjetas extends Component {
             return(
                 <>
             <button onClick = {() => this.addPelicula()} >Agregar peliculas</button>    
-                {this.state.tarjetas.map((tarjeta, index) => {
+                {this.state.filteredMovies.map((tarjeta, index) => {
                         return <Tarjetas key={index}
                         title={tarjeta.title}
                         poster_path={tarjeta.poster_path}
@@ -81,9 +82,16 @@ export default class ContainerTarjetas extends Component {
     filtrarPorNombre(title){
         const peliculasFiltradas = this.state.tarjetas.filter(tarjeta => tarjeta.title.toLowerCase().includes(title.toLowerCase())) // Si (title) esta incluido en el titulo de cualquiera de las tarjetas
         
-        this.setState({
-            filteredMovies: peliculasFiltradas
-        })
+        
+        if(title === ""){
+            this.setState({
+                filteredMovies: this.state.tarjetas
+            })
+        } else {
+            this.setState({
+                filteredMovies: peliculasFiltradas
+            })
+        } 
     }
 
 

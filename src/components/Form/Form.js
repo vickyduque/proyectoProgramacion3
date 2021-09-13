@@ -18,7 +18,9 @@ export default class Formulario extends Component {
         this.setState({
             // .target.value nos dice que valor tiene nuestro input a medida que va cambiando
             valorInput: evento.target.value 
-        },()=>this.props.filtrarPorNombre(this.state.valorInput))
+        },
+        //Funcion callback que se ejecuta inmediatamente despues de actualizar el estado. 
+        ()=>this.props.filtrarPorNombre(this.state.valorInput))
     }
 
     render(){
@@ -26,7 +28,7 @@ export default class Formulario extends Component {
             <form className onSubmit={(evento)=> this.prevenirSubmit(evento)}>
                 <label className= "buscador" >Titulo de pelicula: </label>
 
-                {/* El evento onChange se va a disparar cuando hay un  cambio en el contenido del formulario*/}
+                {/* El evento onChange se va a disparar cuando hay un cambio en el contenido del formulario*/}
                 <input onChange={(evento)=> this.capturaInput(evento) } type="text" value={this.state.valorInput}/>
                 <input className= "boton"  type= "submit"/> 
                 <div className="orientacion">
@@ -38,7 +40,6 @@ export default class Formulario extends Component {
                 </div>
                 <button className= "boton" onClick = {() => this.props.addPelicula()} >Agregar peliculas</button>    
 
-               
             </form>
         )
     }

@@ -91,9 +91,10 @@ export default class ContainerTarjetas extends Component {
         }
     }
 
-    filtrarPorNombre(title){
+    //Metodo para que busque las peliculas
+    filtrarPorNombre(title){  //Tenemos que hacer un filtro para filtrar los nombres de las pelis
         const peliculasFiltradas = this.state.tarjetas.filter(tarjeta => tarjeta.title.toLowerCase().includes(title.toLowerCase())) // Si (title) esta incluido en el titulo de cualquiera de las tarjetas
-        
+                                                                                        //Lowercase para que deje buscar en minuscula
         if(title === ""){
             this.setState({
                 filteredMovies: this.state.tarjetas
@@ -105,7 +106,7 @@ export default class ContainerTarjetas extends Component {
         } 
     }
 
-
+    //Lo que se va a mostrar en pantalla:
     render() {
         return (
             <div className= "container">
@@ -114,10 +115,12 @@ export default class ContainerTarjetas extends Component {
                 addPelicula={()=>(this.addPelicula())}
                 />
                 {this.mostrarContenido()}
-                <footer>
-            Victoria Duque -
-           Tomas Salem -
-           Maximo Chaio
+
+                <footer className= "footer">
+                Integrantes: 
+                Victoria Duque -
+                Tomas Salem -
+                Maximo Chaio :)
              </footer>
             </div>
         )

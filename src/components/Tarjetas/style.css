@@ -1,7 +1,8 @@
 .titulo {
 font-size: 22px;
 text-decoration: underline;
-font-family:Verdana, Geneva, Tahoma, sans-serif
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+text-align: center;
 }
 
 .boton {
@@ -41,9 +42,16 @@ body {
 .container-row-tarjeta2 {
    width: 80%;
    display: flex;
-   
-   
 }
+
+.container-row-tarjeta2:hover {
+    box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
+ }
+
+ .container-column-tarjeta:hover {
+    box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
+ }
+
 .boton1 {
    border-radius: 4px;
    font-size: 14px;
@@ -52,15 +60,37 @@ body {
    background-color: black;
    font-family:Verdana, Geneva, Tahoma, sans-serif;   
    }
+
    .boton1:hover{
       box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
    }
+
 .text {
 font-size: 18px;
 font-family:Verdana, Geneva, Tahoma, sans-serif;
 font-style: normal;
 text-decoration: none;
 font-weight: normal;
-margin: auto;
+margin: 20px;
+text-align: justify;
 }
 
+.text2 {
+    font-size: 18px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: normal;
+    margin: 20px;
+    text-align: center;
+    }
+
+.footer {
+font-size: 13px;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+font-style: normal;
+text-decoration: none;
+font-weight: normal;
+margin: 20px;
+text-align: center;
+}

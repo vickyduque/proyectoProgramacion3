@@ -10,7 +10,7 @@ export default class ContainerTarjetas extends Component {
         this.state = {
             tarjetas: [ ], // array de todas las pelis 
             filteredMovies: [ ], // pelis filtradas para eliminar 
-            pagina: 2,
+            pagina: 2, //cuando agregamos mas pelis, vamos a la pagina 2. 
             orientacion: "container-row",
         }
     }
@@ -31,12 +31,12 @@ export default class ContainerTarjetas extends Component {
             .catch(error => console.log(error));
     }
 
+    // Metodo para cambiar orientacion 
     cambiarOrientacion(orientacion){
         if (orientacion == "columna"){
             this.setState({orientacion: "container-row"})
         } else{
             this.setState({orientacion: "container-column"})
-
         }
 
     }
@@ -94,7 +94,6 @@ export default class ContainerTarjetas extends Component {
     filtrarPorNombre(title){
         const peliculasFiltradas = this.state.tarjetas.filter(tarjeta => tarjeta.title.toLowerCase().includes(title.toLowerCase())) // Si (title) esta incluido en el titulo de cualquiera de las tarjetas
         
-        
         if(title === ""){
             this.setState({
                 filteredMovies: this.state.tarjetas
@@ -115,6 +114,11 @@ export default class ContainerTarjetas extends Component {
                 addPelicula={()=>(this.addPelicula())}
                 />
                 {this.mostrarContenido()}
+                <footer>
+            Victoria Duque -
+           Tomas Salem -
+           Maximo Chaio
+             </footer>
             </div>
         )
     }

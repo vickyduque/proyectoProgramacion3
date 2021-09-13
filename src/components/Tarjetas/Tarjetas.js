@@ -30,12 +30,12 @@ export default class Tarjetas extends Component {
     
     render() {
         return (
-            <div className= "tarjetas" >
+            <div className= { `tarjetas ${this.props.orientacion + "-tarjeta"}`}>
                <h4 className= "titulo"> {this.props.title} </h4>
                <h4> Fecha de estreno: {this.props.release_date} </h4>
                <img alt='20' src={`https://image.tmdb.org/t/p/w342/${this.props.poster_path}`}></img>  {/* Se usan comillas invertidas, y $ Para llamar al valor*/}
                 <br/>
-                <h4 style={{display: this.state.clase }}> {this.props.overview} </h4> {/* Usamos sintaxis de css, por eso la doble llave */}
+                <h4 className="text" style={{display: this.state.clase }}> {this.props.overview} </h4> {/* Usamos sintaxis de css, por eso la doble llave */}
                <button className= "boton" onClick={() => this.handleShow(this.props.overview)}> {this.state.mensaje} </button>  {/* agregamos evento onclick  */}
                <br/>
                <br/>

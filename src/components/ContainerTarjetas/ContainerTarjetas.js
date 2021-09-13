@@ -10,7 +10,8 @@ export default class ContainerTarjetas extends Component {
         this.state = {
             tarjetas: [ ], // array de todas las pelis 
             filteredMovies: [ ], // pelis filtradas para eliminar 
-            pagina: 2
+            pagina: 2,
+            orientacion: "container-row",
         }
     }
 
@@ -30,7 +31,15 @@ export default class ContainerTarjetas extends Component {
             .catch(error => console.log(error));
     }
 
+    cambiarOrientacion(orientacion){
+        if (orientacion == "columna"){
+            this.setState({orientacion: "container-row"})
+        } else{
+            this.setState({orientacion: "container-column"})
 
+        }
+
+    }
      //Metodo que se llama cuando se hace clic en eliminar pelicula. 
      removerPelicula(title){      //Obtengo el titulo de la peli que quiero borrar del array. 
         //Quiero filtrar todas las peliculas que no tengan ese nombre. Permancen en el array aquellas peliculas que no tengan el nombre a filtrar 
@@ -52,7 +61,8 @@ export default class ContainerTarjetas extends Component {
             //A la información que obtengo la guardo en el estado dentro de una propiedad (tarjetas que contiene la informacion a mappear).
                 this.setState({
                     pagina: this.state.pagina + 1,
-                    tarjetas: this.state.tarjetas.concat(data.results)
+                    tarjetas: this.state.tarjetas.concat(data.results),
+                    filteredMovies: this.state.tarjetas.concat(data.results)
                 })
                 console.log(this.state.tarjetas)
             })
@@ -63,7 +73,7 @@ export default class ContainerTarjetas extends Component {
     mostrarContenido(){
         if(this.state.tarjetas.length !== 0){
             return(
-                <>
+                <div className= {this.state.orientacion}>
             <button className= "boton" onClick = {() => this.addPelicula()} >Agregar peliculas</button>    
                 {this.state.filteredMovies.map((tarjeta, index) => {
                         return <Tarjetas key={index}
@@ -71,11 +81,12 @@ export default class ContainerTarjetas extends Component {
                         poster_path={tarjeta.poster_path}
                         overview = {tarjeta.overview}
                         release_date =  {tarjeta.release_date}
+                        orientacion = {this.state.orientacion}
                         removerPelicula = {(title) => this.removerPelicula(title)} //paso una funcion para que elimine la peli. Recibe el id de cada peli. 
                         />
                     })
             }
-            </>)
+            </div>)
         } else{
             return <h2>Cargando...</h2>
         }
@@ -100,7 +111,9 @@ export default class ContainerTarjetas extends Component {
     render() {
         return (
             <div className= "container">
-                <Form filtrarPorNombre={(title)=>{this.filtrarPorNombre(title)}}/>
+                <Form filtrarPorNombre={(title)=>{this.filtrarPorNombre(title)}}
+                cambiarOrientacion={(orientacion)=>{this.cambiarOrientacion(orientacion)}}
+                />
                 {this.mostrarContenido()}
             </div>
         )

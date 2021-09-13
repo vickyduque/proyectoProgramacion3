@@ -23,12 +23,16 @@ export default class Formulario extends Component {
 
     render(){
         return(
-            <form onSubmit={(evento)=> this.prevenirSubmit(evento)}>
+            <form className onSubmit={(evento)=> this.prevenirSubmit(evento)}>
                 <label className= "buscador" >Titulo de pelicula: </label>
+
                 {/* El evento onChange se va a disparar cuando hay un  cambio en el contenido del formulario*/}
                 <input onChange={(evento)=> this.capturaInput(evento) } type="text" value={this.state.valorInput}/>
-                
                 <input className= "boton"  type= "submit"/>
+                <div className="orientacion">
+                <button className= "boton" onClick={()=> this.props.cambiarOrientacion("columna")}>Columnas</button>
+                <button className= "boton" onClick={()=> this.props.cambiarOrientacion("fila")}>Filas</button>
+                </div>
                
             </form>
         )

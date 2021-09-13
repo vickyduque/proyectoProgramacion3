@@ -24,3 +24,12 @@ font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-family:Verdana, Geneva, Tahoma, sans-serif
  }
 
+.container-column-tarjeta {
+   width: 30%;
+
+}
+.comtainer-row-tarjeta {
+   width: 80%;
+   flex-direction: row;
+   display: flex;
+}

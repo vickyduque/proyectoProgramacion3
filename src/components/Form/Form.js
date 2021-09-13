@@ -24,11 +24,12 @@ export default class Formulario extends Component {
     render(){
         return(
             <form onSubmit={(evento)=> this.prevenirSubmit(evento)}>
-                <label>Titulo: </label>
+                <label className= "buscador" >Titulo de pelicula: </label>
                 {/* El evento onChange se va a disparar cuando hay un  cambio en el contenido del formulario*/}
                 <input onChange={(evento)=> this.capturaInput(evento) } type="text" value={this.state.valorInput}/>
                 
-                <input type= "submit"/>
+                <input className= "boton"  type= "submit"/>
+               
             </form>
         )
     }

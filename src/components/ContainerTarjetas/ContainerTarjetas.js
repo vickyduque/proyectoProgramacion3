@@ -43,6 +43,7 @@ export default class ContainerTarjetas extends Component {
        })
     }
 
+    // Llamamos a la API que agregara mas peliculas:
     addPelicula(){
     fetch('https://api.themoviedb.org/3/movie/popular?api_key=274e06a482f13c5a152ff7abe7a3142a&language=en-US&page=' + this.state.pagina)
             .then(response => { return response.json() })
@@ -58,11 +59,12 @@ export default class ContainerTarjetas extends Component {
             .catch(error => console.log(error));
     }
 
+    // Metodo que va a agregar mas peliculas
     mostrarContenido(){
         if(this.state.tarjetas.length !== 0){
             return(
                 <>
-            <button onClick = {() => this.addPelicula()} >Agregar peliculas</button>    
+            <button className= "boton" onClick = {() => this.addPelicula()} >Agregar peliculas</button>    
                 {this.state.filteredMovies.map((tarjeta, index) => {
                         return <Tarjetas key={index}
                         title={tarjeta.title}

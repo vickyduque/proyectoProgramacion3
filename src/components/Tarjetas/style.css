@@ -2,6 +2,7 @@
 font-size: 22px;
 text-decoration: underline;
 text-align: center;
+font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
 .boton {
@@ -10,9 +11,16 @@ font-size: 14px;
 font-weight: bold;
 color: white;
 background-color: black;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 .tarjetas:hover{
     box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
+ }
+
+ .buscador {
+    font-size: 17px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
  }
 

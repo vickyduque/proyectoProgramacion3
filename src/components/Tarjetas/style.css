@@ -20,6 +20,11 @@ body {
    background-color: burlywood;
 }
 
+.boton:hover {
+    box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
+
+}
+
 .tarjetas:hover{
     box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
  }
@@ -32,7 +37,6 @@ body {
 
 .container-column-tarjeta {
    width: 30%;
-
 }
 .container-row-tarjeta2 {
    width: 80%;
@@ -59,3 +63,4 @@ text-decoration: none;
 font-weight: normal;
 margin: auto;
 }
+

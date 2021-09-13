@@ -1,7 +1,6 @@
 .titulo {
 font-size: 22px;
 text-decoration: underline;
-text-align: center;
 font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
@@ -14,10 +13,17 @@ background-color: black;
 font-family:Verdana, Geneva, Tahoma, sans-serif;
 
 }
+.boton:hover{
+   box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
+}
+body {
+   background-color: burlywood;
+}
 
 .tarjetas:hover{
     box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
  }
+
 
  .buscador {
     font-size: 17px;
@@ -28,8 +34,28 @@ font-family:Verdana, Geneva, Tahoma, sans-serif;
    width: 30%;
 
 }
-.comtainer-row-tarjeta {
+.container-row-tarjeta2 {
    width: 80%;
-   flex-direction: row;
    display: flex;
+   
+   
+}
+.boton1 {
+   border-radius: 4px;
+   font-size: 14px;
+   font-weight: bold;
+   color: white;
+   background-color: black;
+   font-family:Verdana, Geneva, Tahoma, sans-serif;   
+   }
+   .boton1:hover{
+      box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
+   }
+.text {
+font-size: 18px;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+font-style: normal;
+text-decoration: none;
+font-weight: normal;
+margin: auto;
 }

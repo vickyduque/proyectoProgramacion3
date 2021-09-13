@@ -74,7 +74,6 @@ export default class ContainerTarjetas extends Component {
         if(this.state.tarjetas.length !== 0){
             return(
                 <div className= {this.state.orientacion}>
-            <button className= "boton" onClick = {() => this.addPelicula()} >Agregar peliculas</button>    
                 {this.state.filteredMovies.map((tarjeta, index) => {
                         return <Tarjetas key={index}
                         title={tarjeta.title}
@@ -113,6 +112,7 @@ export default class ContainerTarjetas extends Component {
             <div className= "container">
                 <Form filtrarPorNombre={(title)=>{this.filtrarPorNombre(title)}}
                 cambiarOrientacion={(orientacion)=>{this.cambiarOrientacion(orientacion)}}
+                addPelicula={()=>(this.addPelicula())}
                 />
                 {this.mostrarContenido()}
             </div>

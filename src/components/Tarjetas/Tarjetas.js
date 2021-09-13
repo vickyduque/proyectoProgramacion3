@@ -30,16 +30,20 @@ export default class Tarjetas extends Component {
     
     render() {
         return (
-            <div className= { `tarjetas ${this.props.orientacion + "-tarjeta"}`}>
+            <div className= { `${this.props.orientacion + "-tarjeta"}`}>
+
                <h4 className= "titulo"> {this.props.title} </h4>
-               <h4> Fecha de estreno: {this.props.release_date} </h4>
+               <h4 className="text"> Fecha de estreno: {this.props.release_date} </h4>
+               <div className= { `${this.props.orientacion + "-tarjeta2"}`}>
+
                <img alt='20' src={`https://image.tmdb.org/t/p/w342/${this.props.poster_path}`}></img>  {/* Se usan comillas invertidas, y $ Para llamar al valor*/}
                 <br/>
-                <h4 className="text" style={{display: this.state.clase }}> {this.props.overview} </h4> {/* Usamos sintaxis de css, por eso la doble llave */}
-               <button className= "boton" onClick={() => this.handleShow(this.props.overview)}> {this.state.mensaje} </button>  {/* agregamos evento onclick  */}
+                <h4 className="text" style={{display: this.state.clase }}> Descripcion: {this.props.overview} </h4> {/* Usamos sintaxis de css, por eso la doble llave */}
+                </div>
+               <button className= "boton1" onClick={() => this.handleShow(this.props.overview)}> {this.state.mensaje} </button>  {/* agregamos evento onclick  */}
                <br/>
                <br/>
-               <button className= "boton" onClick={()=> this.props.removerPelicula(this.props.title)}> Eliminar pelicula </button>
+               <button className= "boton1" onClick={()=> this.props.removerPelicula(this.props.title)}> Eliminar pelicula </button>
            
             </div>
         )

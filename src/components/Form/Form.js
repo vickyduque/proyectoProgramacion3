@@ -32,7 +32,10 @@ export default class Formulario extends Component {
                 <div className="orientacion">
                 <button className= "boton" onClick={()=> this.props.cambiarOrientacion("columna")}>Columnas</button>
                 <button className= "boton" onClick={()=> this.props.cambiarOrientacion("fila")}>Filas</button>
+                
                 </div>
+                <button className= "boton" onClick = {() => this.props.addPelicula()} >Agregar peliculas</button>    
+
                
             </form>
         )

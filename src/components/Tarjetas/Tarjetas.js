@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import "./style.css"
 
-//Componente de presentación (sin lógica)
 export default class Tarjetas extends Component {
     constructor(props){
         super(props);
@@ -20,7 +19,7 @@ export default class Tarjetas extends Component {
                     mensaje: "Ver Menos"
                 })
                 } else {
-                    this.setState({   //si no esta en none, esta en show. SI esta en block, al hacerle clic la idea es que se esconda. 
+                    this.setState({   // Si esta en block, al hacerle clic la idea es que se esconda. 
                         clase: "none",
                         mensaje: "Ver Más"
                     })
@@ -29,7 +28,7 @@ export default class Tarjetas extends Component {
     
     render() {
         return (
-            <div className= { `${this.props.orientacion + "-tarjeta"}`}>  {/* le pasamos 2 clases  */}
+            <div className= { `${this.props.orientacion + "-tarjeta"}`}>  {/* le pasamos 2 clases, template string */}
 
                <h4 className= "titulo"> {this.props.title} </h4>
                <h4 className="text2"> Fecha de estreno: {this.props.release_date} </h4>
@@ -39,10 +38,10 @@ export default class Tarjetas extends Component {
                 <br/>
                 <h4 className="text" style={{display: this.state.clase }}> Descripción: {this.props.overview} </h4> {/* Usamos sintaxis de css, por eso la doble llave */}
                 </div>
-               <button className= "boton1" onClick={() => this.handleShow(this.props.overview)}> {this.state.mensaje} </button>  {/* agregamos evento onclick  */}
+               <button className= "boton" onClick={() => this.handleShow(this.props.overview)}> {this.state.mensaje} </button>  {/* agregamos evento onclick  */}
                <br/>
                <br/>
-               <button className= "boton1" onClick={()=> this.props.removerPelicula(this.props.title)}> Eliminar pelicula </button>
+               <button className= "boton" onClick={()=> this.props.removerPelicula(this.props.title)}> Eliminar pelicula </button>
            
             </div>
         )

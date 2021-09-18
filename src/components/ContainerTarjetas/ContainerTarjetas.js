@@ -37,6 +37,17 @@ export default class ContainerTarjetas extends Component {
         }
 
     }
+    ordenarABC(lista, orden) { //lista: es el parametro que uso para saber que lista ordenar (filteredmovies). orden: defino el orden ascendente
+        this.setState({ //quiero modificar mi lista vieja
+          filteredMovies: lista.sort(function (a, b) { //sort me devuelve una nueva lista ordenada
+            if (a.title > b.title) { //si titulo de a es mas cercano a b en comparacion a z
+              return orden === "ASC" ? 1 : -1; //el elemento más grande se acerque a la posicion 0, más arriba en el array.
+            } else {
+              return orden === "DESC" ? 1 : -1; //si esta en desc y b está más cerca de la letra a, lo quiero más cerca.
+            }
+          }),
+        });
+      }
 
      //Metodo para eliminar pelicula. 
      removerPelicula(title){      //Quiero el titulo de la peli para borrar. 
@@ -104,6 +115,14 @@ export default class ContainerTarjetas extends Component {
     render() {
         return (
             <div className= "container">
+                <div>
+                    <button onClick={()=>this.ordenarABC(this.state.filteredMovies, "ASC")}>
+                        a-z
+                    </button>
+                    <button onClick={()=>this.ordenarABC(this.state.filteredMovies, "DESC")}>
+                        z-a
+                    </button>
+                </div>
                 <Form filtrarPorNombre={(title)=>{this.filtrarPorNombre(title)}}
                 cambiarOrientacion={(orientacion)=>{this.cambiarOrientacion(orientacion)}}
                 addPelicula={()=>(this.addPelicula())}

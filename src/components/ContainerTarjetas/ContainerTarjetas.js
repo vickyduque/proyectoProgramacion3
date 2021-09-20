@@ -116,11 +116,11 @@ export default class ContainerTarjetas extends Component {
         return (
             <div className= "container">
                 <div>
-                    <button onClick={()=>this.ordenarABC(this.state.filteredMovies, "ASC")}>
-                        a-z
+                    <button className= "boton" onClick={()=>this.ordenarABC(this.state.filteredMovies, "ASC")}>
+                        A-Z
                     </button>
-                    <button onClick={()=>this.ordenarABC(this.state.filteredMovies, "DESC")}>
-                        z-a
+                    <button className= "boton" onClick={()=>this.ordenarABC(this.state.filteredMovies, "DESC")}>
+                        Z-A
                     </button>
                 </div>
                 <Form filtrarPorNombre={(title)=>{this.filtrarPorNombre(title)}}

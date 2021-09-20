@@ -30,7 +30,6 @@ export default class Formulario extends Component {
 
                 {/* El evento onChange se va a disparar cuando hay un cambio en el contenido del formulario*/}
                 <input onChange={(evento)=> this.capturaInput(evento) } type="text" value={this.state.valorInput}/>
-                <input className= "boton"  type= "submit"/> 
                 <div className="orientacion">
                 <button className= "boton" onClick={()=> this.props.cambiarOrientacion("columna")}>Columnas</button>
          
